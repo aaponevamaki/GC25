@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f479962e603740d4c8244b1ff56b8f6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridWorldSize: {x: 20, y: 20}
+  gridWorldSize: {x: 20, y: 12}
   nodeRadius: 0.25
   obstacleAvoidanceRadius: 0.5
   unwalkableMask:

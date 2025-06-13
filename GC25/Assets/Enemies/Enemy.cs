@@ -1,9 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+#region
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
+#endregion
 
 public class Enemy : MonoBehaviour
 {
@@ -16,8 +18,8 @@ public class Enemy : MonoBehaviour
     public EnemyType enemyType;
 
     private float _speed;
-    public float _basicSpeed = 5f;
-    public float _fastSpeed = 10f;
+    [SerializeField] private float _basicSpeed = 5f;
+    [SerializeField] private float _fastSpeed = 10f;
 
     private GameObject _target;
 
@@ -25,9 +27,10 @@ public class Enemy : MonoBehaviour
 
     private List<Node> _path;
     private int _currentWaypoint = 0;
+    private float _waitTime = 1.5f;
     private readonly float _updateInterval = 0.5f;
 
-    private int _damage = 1;
+    [SerializeField] private int _damage = 1;
     private float _hitInterval = 2f;
     private bool _hitCooldown = false;
 
@@ -43,6 +46,12 @@ public class Enemy : MonoBehaviour
                 break;
         }
 
+        StartCoroutine(WaitBeforeMoving());
+    }
+
+    private IEnumerator WaitBeforeMoving()
+    {
+        yield return new WaitForSeconds(_waitTime);
         SetTarget(GameObject.FindGameObjectWithTag("Player"));
         InvokeRepeating(nameof(UpdatePath), 0f, _updateInterval);
     }
@@ -81,14 +90,17 @@ public class Enemy : MonoBehaviour
     {
         if (collision.CompareTag("Player") && !_hitCooldown)
         {
-            HitPlayer();
+            HitPlayer(collision.gameObject);
         }
     }
 
-    private void HitPlayer()
+    private void HitPlayer(GameObject player)
     {
         _hitCooldown = true;
-        // TODO: Damage player
+
+        if (player.TryGetComponent(out HealthManager healthManager))
+            healthManager.Damage(_damage);
+
         StartCoroutine(HitCooldown());
     }
 
@@ -120,6 +132,8 @@ public class EnemyEditor : Editor
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("_fastSpeed"));
                 break;
         }
+
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("_damage"));
 
         serializedObject.ApplyModifiedProperties();
     }
