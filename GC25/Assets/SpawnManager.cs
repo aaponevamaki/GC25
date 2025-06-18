@@ -1,34 +1,68 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class SpawnManager : MonoBehaviour
 {
     [Header("Enemy spawn settings")]
-    [SerializeField] private GameObject[] _enemies;
+    [SerializeField] private GameObject[] _enemyPrefabs;
+    [SerializeField] private int _poolSize = 20;
     [SerializeField] private float _enemySpawnRate = 5f;
+    [SerializeField] private float _minSpawnDistance = 5f;
 
     private GridManager _gridManager;
-
     private GameObject _player;
-    [SerializeField] private float _minSpawnDistance = 5f;
+
+    private List<GameObject> _enemyPool = new();
 
     private void Start()
     {
         _gridManager = Pathfinding.Instance.GetComponent<GridManager>();
         _player = GameObject.FindGameObjectWithTag("Player");
+        InitializeEnemyPool();
         StartSpawningEnemies();
+    }
+
+    private void InitializeEnemyPool()
+    {
+        for (int i = 0; i < _poolSize; i++)
+        {
+            int prefabIndex = i % _enemyPrefabs.Length;
+            GameObject enemy = Instantiate(_enemyPrefabs[prefabIndex]);
+            enemy.SetActive(false);
+            _enemyPool.Add(enemy);
+        }
     }
 
     public void StartSpawningEnemies()
     {
-        InvokeRepeating(nameof(SpawnEnemies), 0f, _enemySpawnRate);
+        InvokeRepeating(nameof(SpawnEnemyFromPool), 0f, _enemySpawnRate);
     }
 
-    private void SpawnEnemies()
+    private void SpawnEnemyFromPool()
     {
-        int i = Random.Range(0, _enemies.Length);
-        Vector3 spawnPos = GetRandomWorldPosition();
+        GameObject enemy = GetInactiveEnemyFromPool();
 
-        Instantiate(_enemies[i], spawnPos, Quaternion.identity);
+        if (enemy != null)
+        {
+            Vector3 spawnPos = GetRandomWorldPosition();
+            enemy.transform.position = spawnPos;
+            enemy.SetActive(true);
+        }
+    }
+
+    private GameObject GetInactiveEnemyFromPool()
+    {
+        List<GameObject> inactiveEnemies = new();
+
+        foreach (GameObject enemy in _enemyPool)
+        {
+            if (!enemy.activeInHierarchy) inactiveEnemies.Add(enemy);
+        }
+
+        if (inactiveEnemies.Count == 0) return null;
+
+        int random = Random.Range(0, inactiveEnemies.Count);
+        return inactiveEnemies[random];
     }
 
     private Vector3 GetRandomWorldPosition()
