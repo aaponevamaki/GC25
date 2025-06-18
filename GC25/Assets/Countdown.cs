@@ -7,8 +7,7 @@ public class Countdown : MonoBehaviour
     public TMP_Text countdownText;
     public float countdownDuration = 3f;
 
-    public PlayerMouseMovement MouseMovement;
-    public PlayerMovement keyboardMovement;
+    public PlayerMovement playerMovement;
 
     void Start()
     {
@@ -26,11 +25,11 @@ public class Countdown : MonoBehaviour
             timeLeft--;
         }
 
+        // TODO: Change the "GO!"
         countdownText.text = "GO!";
         yield return new WaitForSeconds(1f);
         countdownText.gameObject.SetActive(false);
 
-        MouseMovement.OnCountdownFinished();
-        keyboardMovement.OnCountdownFinished();
+        playerMovement.OnCountdownFinished();
     }
 }
