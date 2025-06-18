@@ -58,6 +58,7 @@ public class Pathfinding : MonoBehaviour
                     continue;
 
                 int newMovementCostToNeighbour = currentNode.gCost + GetDistance(currentNode, neighbour);
+
                 if (newMovementCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour))
                 {
                     neighbour.gCost = newMovementCostToNeighbour;
@@ -91,6 +92,9 @@ public class Pathfinding : MonoBehaviour
     {
         int dstX = Mathf.Abs(a.gridX - b.gridX);
         int dstY = Mathf.Abs(a.gridY - b.gridY);
-        return dstX + dstY; // Manhattan distance
+
+        if (dstX > dstY)
+            return 14 * dstY + 10 * (dstX - dstY);
+        return 14 * dstX + 10 * (dstY - dstX);
     }
 }

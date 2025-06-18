@@ -54,14 +54,23 @@ public class GridManager : MonoBehaviour
             for (int y = -1; y <= 1; y++)
             {
                 if (x == 0 && y == 0) continue; // skip self
-                if (Mathf.Abs(x) == 1 && Mathf.Abs(y) == 1) continue; // skip diagonals if you want
 
                 int checkX = node.gridX + x;
                 int checkY = node.gridY + y;
 
                 if (checkX >= 0 && checkX < gridSizeX && checkY >= 0 && checkY < gridSizeY)
                 {
-                    neighbours.Add(grid[checkX, checkY]);
+                    Node neighbour = grid[checkX, checkY];
+
+                    if (x != 0 && y != 0)
+                    {
+                        Node nodeX = grid[node.gridX + x, node.gridY];
+                        Node nodeY = grid[node.gridX, node.gridY + y];
+
+                        if (!nodeX.walkable || !nodeY.walkable) continue;
+                    }
+
+                    neighbours.Add(neighbour);
                 }
             }
         }
