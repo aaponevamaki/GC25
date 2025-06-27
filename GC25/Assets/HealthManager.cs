@@ -9,12 +9,12 @@ public class HealthManager : MonoBehaviour
     }
 
     public ObjectType objectType;
-    [SerializeField] private int _health = 4;
+    [SerializeField] private int _maxHealth = 4;
     private int _currentHealth;
 
-    private void OnEnable()
+    private void Awake()
     {
-        _currentHealth = _health;
+        _currentHealth = _maxHealth;
     }
 
     public void Heal(int healAmount)
@@ -35,8 +35,12 @@ public class HealthManager : MonoBehaviour
                     break;
                 case ObjectType.Enemy:
                     gameObject.SetActive(false);
+                    SetHealth(_maxHealth);
                     break;
             }
         }
     }
+
+    public int GetHealth() => _currentHealth;
+    public void SetHealth(int health) => _currentHealth = health;
 }

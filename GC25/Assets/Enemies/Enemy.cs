@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     }
 
     public EnemyType enemyType;
+    public int id;
 
     private float _speed;
     [SerializeField] private float _basicSpeed = 5f;
