@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class SpawnManager : MonoBehaviour
 {
+    public static SpawnManager Instance;
+
     [Header("Enemy spawn settings")]
     [SerializeField] private GameObject[] _enemyPrefabs;
     [SerializeField] private int _poolSize = 20;
@@ -14,12 +16,21 @@ public class SpawnManager : MonoBehaviour
 
     private List<GameObject> _enemyPool = new();
 
-    private void Start()
+    private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(Instance);
+        }
+
         _gridManager = Pathfinding.Instance.GetComponent<GridManager>();
         _player = GameObject.FindGameObjectWithTag("Player");
         InitializeEnemyPool();
-        StartSpawningEnemies();
+        LoadEnemyData();
     }
 
     private void InitializeEnemyPool()
@@ -29,7 +40,24 @@ public class SpawnManager : MonoBehaviour
             int prefabIndex = i % _enemyPrefabs.Length;
             GameObject enemy = Instantiate(_enemyPrefabs[prefabIndex]);
             enemy.SetActive(false);
+            enemy.GetComponent<Enemy>().id = i;
             _enemyPool.Add(enemy);
+        }
+    }
+
+    private void LoadEnemyData()
+    {
+        GameData gameData = SaveGame.LoadGameData();
+        if (gameData == null) return;
+
+        List<EnemyData> enemyDataList = gameData.enemyDataList;
+        if (enemyDataList == null) return;
+
+        foreach (EnemyData enemy in enemyDataList)
+        {
+            _enemyPool[enemy.id].SetActive(true);
+            _enemyPool[enemy.id].transform.position = enemy.position;
+            _enemyPool[enemy.id].GetComponent<HealthManager>().SetHealth(enemy.health);
         }
     }
 
@@ -78,5 +106,17 @@ public class SpawnManager : MonoBehaviour
         while (!_gridManager.NodeFromWorldPoint(randomPos).walkable || distance < _minSpawnDistance);
 
         return randomPos;
+    }
+
+    public List<GameObject> GetActiveEnemies()
+    {
+        List<GameObject> enemies = new();
+
+        foreach (GameObject enemy in _enemyPool)
+        {
+            if (enemy.activeInHierarchy) enemies.Add(enemy);
+        }
+
+        return enemies;
     }
 }
