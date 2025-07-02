@@ -41,3 +41,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 3863148361
+    locked: 0
+  - name: PowerUp
+    uniqueID: 2265122767
+    locked: 0
+  - name: Bomb
+    uniqueID: 1857208083
+    locked: 0
+  - name: Player
+    uniqueID: 4240448021
+    locked: 0
+  - name: Effect
+    uniqueID: 1163870511
+    locked: 0
+  - name: UI
+    uniqueID: 1921560115
+    locked: 0

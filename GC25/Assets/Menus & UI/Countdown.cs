@@ -9,7 +9,7 @@ public class Countdown : MonoBehaviour
 
     public PlayerMovement playerMovement;
 
-    void Start()
+    public void BeginCountdown()
     {
         StartCoroutine(StartCountdown());
     }
