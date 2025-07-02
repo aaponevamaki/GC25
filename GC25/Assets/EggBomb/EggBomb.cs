@@ -42,6 +42,13 @@ public class EggBomb : MonoBehaviour
             }
         }
 
+        // Trigger camera shake if upgraded
+        // TODO: Change to better check for upgrade. Check if bomb has PowerUpBombStats.asset assigned
+        if (CameraShake.Instance != null && stats.explosionRadius > 3f)
+        {
+            CameraShake.Instance.StartCoroutine(CameraShake.Instance.Shake(0.2f, 0.2f));
+        }
+
         Destroy(gameObject);
     }
 

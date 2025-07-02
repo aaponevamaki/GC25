@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3391417741108072397}
   - component: {fileID: 7510060132427092216}
   - component: {fileID: 2988762802427911978}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ExplosionEffectTEST
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4853,8 +4853,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1163870511
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
