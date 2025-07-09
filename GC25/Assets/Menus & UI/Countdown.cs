@@ -31,5 +31,7 @@ public class Countdown : MonoBehaviour
         countdownText.gameObject.SetActive(false);
 
         playerMovement.OnCountdownFinished();
+
+        if (SpawnManager.Instance != null) SpawnManager.Instance.StartSpawningEnemies();
     }
 }
