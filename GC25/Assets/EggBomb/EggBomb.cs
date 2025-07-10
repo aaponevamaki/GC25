@@ -6,7 +6,9 @@ public class EggBomb : MonoBehaviour
     [Header("FX")]
     public GameObject explosionEffectPrefab;
 
+    [Header("Bomb Stats")]
     public BombStats stats;
+    public BombStats upgradedBombStats;
 
     void Start()
     {
@@ -43,8 +45,7 @@ public class EggBomb : MonoBehaviour
         }
 
         // Trigger camera shake if upgraded
-        // TODO: Change to better check for upgrade. Check if bomb has PowerUpBombStats.asset assigned
-        if (CameraShake.Instance != null && stats.explosionRadius > 3f)
+        if (CameraShake.Instance != null && stats == upgradedBombStats)
         {
             CameraShake.Instance.StartCoroutine(CameraShake.Instance.Shake(0.2f, 0.2f));
         }

@@ -76,8 +76,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -54519275
+  m_SortingLayer: 4
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0.95156765, b: 1, a: 1}
@@ -201,6 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bombPrefab: {fileID: 8969192473449616531, guid: 186cf159b7220704883d1082f388b136, type: 3}
   bombStats: {fileID: 11400000, guid: 016913b83a4c152458bfbd9fcc048db2, type: 2}
+  defaultBombStats: {fileID: 11400000, guid: 016913b83a4c152458bfbd9fcc048db2, type: 2}
 --- !u!114 &-550234945621448314
 MonoBehaviour:
   m_ObjectHideFlags: 0
