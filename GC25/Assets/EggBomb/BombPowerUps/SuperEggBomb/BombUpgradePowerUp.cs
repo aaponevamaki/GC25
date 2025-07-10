@@ -5,16 +5,14 @@ using UnityEngine;
 public class BombUpgradePowerUp : MonoBehaviour
 {
     public BombStats upgradedStats;
+    public float duration = 5f;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         PlayerBombController placer = other.GetComponent<PlayerBombController>();
         if (placer != null)
         {
-            placer.bombStats = upgradedStats;
-
-            Debug.Log("Bomb upgraded!");
-
+            placer.ApplyBombUpgrade(upgradedStats, duration);
             Destroy(gameObject);
         }
     }
