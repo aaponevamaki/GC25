@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class MainMenu : MonoBehaviour
 {
@@ -20,5 +22,15 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("QUIT");
         Application.Quit();
+    }
+
+    public void LoadMainMenu()
+    {
+        if (!mainMenuPanel.activeSelf)
+        {
+            mainMenuPanel.SetActive(true);
+            // TODO: Work with game saving/loading
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }

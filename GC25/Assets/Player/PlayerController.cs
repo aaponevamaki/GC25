@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private Controls controls;
     private PlayerMovement movement;
     private PlayerBombController bomb;
+    public GameObject mainmenu;
 
     void Awake()
     {
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
         controls.Player.Move.performed += ctx => movement.SetMoveInput(ctx.ReadValue<Vector2>());
         controls.Player.Move.canceled += ctx => movement.SetMoveInput(Vector2.zero);
         controls.Player.Bomb.performed += ctx => bomb.PlaceBomb();
+        controls.Player.Menu.performed += ctx => mainmenu.GetComponent<MainMenu>().LoadMainMenu();
 
         LoadPlayerData();
     }
