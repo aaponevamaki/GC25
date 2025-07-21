@@ -71,4 +71,9 @@ public static class SaveGame
         GameData gameData = JsonUtility.FromJson<GameData>(json);
         return gameData;
     }
+
+    public static void ClearGameData()
+    {
+        if (File.Exists(GetFilePath())) File.Delete(GetFilePath());
+    }
 }

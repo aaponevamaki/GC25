@@ -126,7 +126,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (_smoothedPath == null || _smoothIndex >= _smoothedPath.Count) return;
+        if (_smoothedPath == null || _smoothIndex >= _smoothedPath.Count || !Timer.Instance.IsRunning()) return;
 
         Vector3 waypointPos = _smoothedPath[_smoothIndex];
         Vector3 dir = (waypointPos - transform.position).normalized;

@@ -29,6 +29,7 @@ public class MainMenu : MonoBehaviour
         if (!mainMenuPanel.activeSelf)
         {
             mainMenuPanel.SetActive(true);
+            if (Timer.Instance != null) Timer.Instance.StopTimer();
             // TODO: Work with game saving/loading
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
