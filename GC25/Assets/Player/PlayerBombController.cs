@@ -9,6 +9,13 @@ public class PlayerBombController : MonoBehaviour
     public BombStats bombStats;
     public BombStats defaultBombStats;
 
+    public BombStats upgradedBombStats;
+    public BombStats rapidBombStats;
+
+
+    public Color rapidColor = new Color(1f, 0f, 0.63f);
+    public Color nukeColor = new Color(1f, 0.16f, 0f);
+
     public Slider powerUpSlider;
 
     private float lastBombTime = -Mathf.Infinity;
@@ -49,8 +56,12 @@ public class PlayerBombController : MonoBehaviour
 
         if (powerUpSlider != null)
         {
+            powerUpSlider.fillRect.GetComponent<Image>().color =
+                (bombStats == upgradedBombStats) ? nukeColor : rapidColor;
+
             powerUpSlider.gameObject.SetActive(true);
         }
+
 
         float timeLeft = duration;
         while (timeLeft > 0f)
