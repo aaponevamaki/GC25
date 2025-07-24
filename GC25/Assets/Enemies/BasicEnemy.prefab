@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3740197222989107748}
   - component: {fileID: 4586103401830933091}
   - component: {fileID: 5219318773496426366}
-  - component: {fileID: -1895348406322003133}
   - component: {fileID: 940313615105653607}
   m_Layer: 0
   m_Name: BasicEnemy
@@ -184,21 +183,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectType: 1
   _maxHealth: 4
---- !u!111 &-1895348406322003133
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 174048059867958172}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: ee5094cb06e6d404fb1a81f7cc39ed26, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!95 &940313615105653607
 Animator:
   serializedVersion: 5
