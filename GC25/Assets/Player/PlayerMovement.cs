@@ -15,6 +15,33 @@ public class PlayerMovement : MonoBehaviour
     public void SetMoveInput(Vector2 input)
     {
         moveInput = input;
+
+        if (input == Vector2.zero)
+        {
+            GetComponent<Animator>().SetBool("Walking", false);
+        }
+        else
+        {
+            GetComponent<Animator>().SetBool("Walking", true);
+        }
+
+        FlipCharacter(input.x);
+    }
+
+    private void FlipCharacter(float moveX)
+    {
+        if (moveX > 0)
+        {
+            Vector3 scale = transform.localScale;
+            scale.x = Mathf.Abs(scale.x);
+            transform.localScale = scale;
+        }
+        else if (moveX < 0)
+        {
+            Vector3 scale = transform.localScale;
+            scale.x = -Mathf.Abs(scale.x);
+            transform.localScale = scale;
+        }
     }
 
     public void OnCountdownFinished()

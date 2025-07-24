@@ -38,6 +38,10 @@ public class Enemy : MonoBehaviour
 
     public bool _showGizmos = false;
 
+    private Animator _animator;
+
+    private bool _isFacingRight = true;
+
     private void OnEnable()
     {
         switch (enemyType)
@@ -49,6 +53,8 @@ public class Enemy : MonoBehaviour
                 _speed = _fastSpeed;
                 break;
         }
+
+        _animator = GetComponent<Animator>();
 
         StartCoroutine(WaitBeforeMoving());
     }
@@ -126,15 +132,43 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (_smoothedPath == null || _smoothIndex >= _smoothedPath.Count || !Timer.Instance.IsRunning()) return;
+        if (_smoothedPath == null || _smoothIndex >= _smoothedPath.Count || !Timer.Instance.IsRunning())
+        {
+            if (_animator != null && _animator.GetBool("Walking")) _animator.SetBool("Walking", false);
+            return;
+        }
+
+        if (_animator != null && !_animator.GetBool("Walking")) _animator.SetBool("Walking", true);
 
         Vector3 waypointPos = _smoothedPath[_smoothIndex];
         Vector3 dir = (waypointPos - transform.position).normalized;
         transform.position += _speed * Time.deltaTime * dir;
 
+        FlipCharacter(dir.x);
+
         if (Vector3.Distance(transform.position, waypointPos) < _nextWaypointDistance)
         {
             _smoothIndex++;
+        }
+    }
+
+    private void FlipCharacter(float moveX)
+    {
+        if (Mathf.Abs(moveX) < 0.1f) return;
+
+        if (moveX > 0 && !_isFacingRight)
+        {
+            _isFacingRight = true;
+            Vector3 scale = transform.localScale;
+            scale.x = Mathf.Abs(scale.x);
+            transform.localScale = scale;
+        }
+        else if (moveX < 0 && _isFacingRight)
+        {
+            _isFacingRight = false;
+            Vector3 scale = transform.localScale;
+            scale.x = -Mathf.Abs(scale.x);
+            transform.localScale = scale;
         }
     }
 
