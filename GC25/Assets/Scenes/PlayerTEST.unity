@@ -3302,6 +3302,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -550234945621448314, guid: ecc187878721b1a46b31b86a9359f68c, type: 3}
+      propertyPath: _currentHealth
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2814221185656319214, guid: ecc187878721b1a46b31b86a9359f68c, type: 3}
       propertyPath: mainmenu
       value: 
