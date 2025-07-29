@@ -25,7 +25,6 @@ public class Countdown : MonoBehaviour
             timeLeft--;
         }
 
-        // TODO: Change the "GO!"
         countdownText.text = "GO!";
         yield return new WaitForSeconds(1f);
         countdownText.gameObject.SetActive(false);

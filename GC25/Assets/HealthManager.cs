@@ -32,6 +32,11 @@ public class HealthManager : MonoBehaviour
             {
                 case ObjectType.Player:
                     // Player died.
+                    GameOver gameOver = FindObjectOfType<GameOver>();
+                    if (gameOver != null)
+                    {
+                        gameOver.OnPlayerDied();
+                    }
                     break;
                 case ObjectType.Enemy:
                     gameObject.SetActive(false);

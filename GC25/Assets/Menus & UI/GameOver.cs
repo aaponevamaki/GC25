@@ -18,16 +18,13 @@ public class GameOver : MonoBehaviour
         mainMenuScript = GetComponent<MainMenu>();
     }
 
-    void Update()
+    public void OnPlayerDied()
     {
-        if (gameIsOver || playerHealth == null)
+        if (gameIsOver)
             return;
 
-        if (playerHealth.GetHealth() <= 0)
-        {
-            gameIsOver = true;
-            StartCoroutine(GameOverSequence());
-        }
+        gameIsOver = true;
+        StartCoroutine(GameOverSequence());
     }
 
     private IEnumerator GameOverSequence()
