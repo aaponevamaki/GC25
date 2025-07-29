@@ -26,22 +26,26 @@ public class HealthManager : MonoBehaviour
     {
         _currentHealth -= damageAmount;
 
-        if (_currentHealth <= 0)
+        if (_currentHealth == 0)
         {
             switch (objectType)
             {
                 case ObjectType.Player:
-                    // Player died.
-                    GameOver gameOver = FindObjectOfType<GameOver>();
-                    if (gameOver != null)
                     {
-                        gameOver.OnPlayerDied();
+                        GameOver gameOver = FindObjectOfType<GameOver>();
+                        if (gameOver != null)
+                        {
+                            gameOver.OnPlayerDied();
+                        }
+                        break;
                     }
-                    break;
                 case ObjectType.Enemy:
-                    gameObject.SetActive(false);
-                    SetHealth(_maxHealth);
-                    break;
+                    {
+                        gameObject.SetActive(false);
+                        SetHealth(_maxHealth);
+                        SpawnManager.Instance.SpawnPowerup(transform.position);
+                        break;
+                    }
             }
         }
     }
