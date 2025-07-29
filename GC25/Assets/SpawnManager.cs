@@ -11,12 +11,15 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float _enemySpawnRate = 5f;
     [SerializeField] private float _minSpawnDistance = 5f;
 
+    [Header("Powerups")]
+    [SerializeField] private GameObject[] _powerupPrefabs;
+
     private GridManager _gridManager;
     private GameObject _player;
 
     private List<GameObject> _enemyPool = new();
 
-    private void Awake()
+    private void Start()
     {
         if (Instance == null)
         {
@@ -35,10 +38,13 @@ public class SpawnManager : MonoBehaviour
 
     private void InitializeEnemyPool()
     {
+        GameObject enemyPool = new("EnemyPool");
+
         for (int i = 0; i < _poolSize; i++)
         {
             int prefabIndex = i % _enemyPrefabs.Length;
             GameObject enemy = Instantiate(_enemyPrefabs[prefabIndex]);
+            enemy.transform.SetParent(enemyPool.transform);
             enemy.SetActive(false);
             enemy.GetComponent<Enemy>().id = i;
             _enemyPool.Add(enemy);
@@ -118,5 +124,17 @@ public class SpawnManager : MonoBehaviour
         }
 
         return enemies;
+    }
+
+    public void SpawnPowerup(Vector2 spawnPos)
+    {
+        float possibility = 0.33f;
+        float randomFloat = Random.Range(0f, 1f);
+        if (randomFloat > possibility) return;
+
+        int randomInt = Random.Range(0, _powerupPrefabs.Length);
+        GameObject powerup = _powerupPrefabs[randomInt];
+
+        Instantiate(powerup, spawnPos, Quaternion.identity);
     }
 }

@@ -16,16 +16,19 @@ public class PlayerMovement : MonoBehaviour
     {
         moveInput = input;
 
-        if (input == Vector2.zero)
+        if (gameStarted)
         {
-            GetComponent<Animator>().SetBool("Walking", false);
-        }
-        else
-        {
-            GetComponent<Animator>().SetBool("Walking", true);
-        }
+            if (input == Vector2.zero)
+            {
+                GetComponent<Animator>().SetBool("Walking", false);
+            }
+            else
+            {
+                GetComponent<Animator>().SetBool("Walking", true);
+            }
 
-        FlipCharacter(input.x);
+            FlipCharacter(input.x);
+        }
     }
 
     private void FlipCharacter(float moveX)
