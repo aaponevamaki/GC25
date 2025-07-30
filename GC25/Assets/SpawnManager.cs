@@ -76,7 +76,7 @@ public class SpawnManager : MonoBehaviour
     {
         GameObject enemy = GetInactiveEnemyFromPool();
 
-        if (enemy != null)
+        if (enemy != null && _player != null)
         {
             Vector3 spawnPos = GetRandomWorldPosition();
             enemy.transform.position = spawnPos;
