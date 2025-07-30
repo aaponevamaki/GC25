@@ -57,7 +57,15 @@ public class PlayerMovement : MonoBehaviour
         if (!gameStarted) return;
 
         Vector3 movement = new Vector3(moveInput.x, moveInput.y, 0f);
-        transform.position += movement * moveSpeed * Time.deltaTime;
+        Vector3 nextPosition = transform.position + movement * moveSpeed * Time.deltaTime;
+
+        int unwalkableLayer = LayerMask.GetMask("Unwalkable");
+        Collider2D hit = Physics2D.OverlapCircle(nextPosition, 0.3f, unwalkableLayer);
+
+        if (hit == null)
+        {
+            transform.position = nextPosition;
+        }
     }
 
     public void ApplySpeedBoost(float multiplier, float duration, Slider slider, Color sliderColor)

@@ -36,6 +36,7 @@ public class HealthManager : MonoBehaviour
                         if (gameOver != null)
                         {
                             gameOver.OnPlayerDied();
+                            Destroy(gameObject);
                         }
                         break;
                     }
