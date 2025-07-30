@@ -32,6 +32,6 @@ public class GameOver : MonoBehaviour
         gameOverText.gameObject.SetActive(true);
         gameOverText.text = "GAME OVER";
         yield return new WaitForSeconds(gameOverDelay);
-        mainMenuScript.LoadMainMenu();
+        mainMenuScript.LoadMainMenu(saveProgress: false);
     }
 }

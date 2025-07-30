@@ -74,6 +74,6 @@ public static class SaveGame
 
     public static void ClearGameData()
     {
-        if (File.Exists(GetFilePath())) File.Delete(GetFilePath());
+        if (File.Exists(GetFilePath())) File.WriteAllText(GetFilePath(), string.Empty);
     }
 }
