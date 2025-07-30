@@ -100,3 +100,6 @@ MonoBehaviour:
   explosionEffectPrefab: {fileID: 7886176223312493490, guid: 45a48650a6f2e534bb170ac44bd07a2b, type: 3}
   stats: {fileID: 11400000, guid: 016913b83a4c152458bfbd9fcc048db2, type: 2}
   upgradedBombStats: {fileID: 11400000, guid: 34c5b928a897bb94698b2f5789be73a2, type: 2}
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 8

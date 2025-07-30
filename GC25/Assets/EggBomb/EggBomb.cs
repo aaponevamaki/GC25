@@ -10,6 +10,9 @@ public class EggBomb : MonoBehaviour
     public BombStats stats;
     public BombStats upgradedBombStats;
 
+    [Header("Layer Masks")]
+    public LayerMask obstacleMask;
+
     void Start()
     {
         Invoke(nameof(Explode), stats.fuseTime);
@@ -19,7 +22,6 @@ public class EggBomb : MonoBehaviour
     {
         if (stats == null) return;
 
-        // Show test explosion effect
         if (explosionEffectPrefab != null)
         {
             GameObject fx = Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
@@ -37,6 +39,19 @@ public class EggBomb : MonoBehaviour
 
         foreach (var obj in hitObjects)
         {
+            Collider2D objCollider = obj.GetComponent<Collider2D>();
+            if (objCollider != null)
+            {
+                Vector2 targetPoint = objCollider.ClosestPoint(transform.position);
+                RaycastHit2D hit = Physics2D.Linecast(transform.position, targetPoint, obstacleMask);
+                Debug.DrawLine(transform.position, targetPoint, Color.yellow, 1f);
+
+                if (hit.collider != null)
+                {
+                    continue;
+                }
+            }
+
             HealthManager health = obj.GetComponent<HealthManager>();
             if (health != null)
             {

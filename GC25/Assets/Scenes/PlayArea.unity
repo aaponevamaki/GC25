@@ -1684,6 +1684,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2205436803287540753, guid: 7d2805495f7806f45bb1a29e82a1054e, type: 3}
+      propertyPath: _poolSize
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5165646714824923035, guid: 7d2805495f7806f45bb1a29e82a1054e, type: 3}
       propertyPath: m_Name
       value: SpawnManager
@@ -4319,6 +4323,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -550234945621448314, guid: ecc187878721b1a46b31b86a9359f68c, type: 3}
+      propertyPath: _maxHealth
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: -550234945621448314, guid: ecc187878721b1a46b31b86a9359f68c, type: 3}
       propertyPath: _currentHealth
       value: 1
