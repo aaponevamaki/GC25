@@ -43,6 +43,7 @@ public class HealthManager : MonoBehaviour
                         GameOver gameOver = FindObjectOfType<GameOver>();
                         if (gameOver != null)
                         {
+                            AudioManager.Instance.PlaySFXClip("PlayerDeath");
                             gameOver.OnPlayerDied();
                             Destroy(gameObject);
                         }
@@ -53,6 +54,21 @@ public class HealthManager : MonoBehaviour
                         gameObject.SetActive(false);
                         SetHealth(_maxHealth);
                         SpawnManager.Instance.SpawnPowerup(transform.position);
+                        break;
+                    }
+            }
+        }
+        else
+        {
+            switch (objectType)
+            {
+                case ObjectType.Player:
+                    {
+                        AudioManager.Instance.PlaySFXClip("PlayerDamage");
+                        break;
+                    }
+                case ObjectType.Enemy:
+                    {
                         break;
                     }
             }

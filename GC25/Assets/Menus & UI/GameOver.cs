@@ -31,6 +31,7 @@ public class GameOver : MonoBehaviour
     {
         gameOverText.gameObject.SetActive(true);
         gameOverText.text = "GAME OVER";
+        AudioManager.Instance.PlaySFXClip("GameOver");
         yield return new WaitForSeconds(gameOverDelay);
         mainMenuScript.LoadMainMenu(saveProgress: false);
     }

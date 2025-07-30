@@ -21,11 +21,13 @@ public class Countdown : MonoBehaviour
         while (timeLeft > 0)
         {
             countdownText.text = Mathf.Ceil(timeLeft).ToString();
+            AudioManager.Instance.PlaySFXClip("Beep");
             yield return new WaitForSeconds(1f);
             timeLeft--;
         }
 
         countdownText.text = "GO!";
+        AudioManager.Instance.PlaySFXClip("Boop");
         yield return new WaitForSeconds(1f);
         countdownText.gameObject.SetActive(false);
 

@@ -16,11 +16,14 @@ public class EggBomb : MonoBehaviour
     void Start()
     {
         Invoke(nameof(Explode), stats.fuseTime);
+        AudioManager.Instance.PlaySFXClip("BombDrop");
     }
 
     void Explode()
     {
         if (stats == null) return;
+
+        AudioManager.Instance.PlaySFXClip("BombExplosion");
 
         if (explosionEffectPrefab != null)
         {
