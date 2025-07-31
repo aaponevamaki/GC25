@@ -12,4 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ddbd5c05d9ebc244bb78efd5ad4b778, type: 3}
   m_Name: SoundBank
   m_EditorClassIdentifier: 
-  audioObjects: []
+  audioObjects:
+  - id: PlayerDeath
+    audioClip: {fileID: 8300000, guid: c4385a3b6e1d7a84a9526021305bdd4d, type: 3}
+    volume: 1
+  - id: PlayerDamage
+    audioClip: {fileID: 8300000, guid: c970b793803c08f4f855253f4eb4b817, type: 3}
+    volume: 1
+  - id: BombExplosion
+    audioClip: {fileID: 8300000, guid: b60dc0f28cac24743a13fa0a688942ff, type: 3}
+    volume: 1
+  - id: GameOver
+    audioClip: {fileID: 8300000, guid: 8a31bb8e3d86f8743b50ceed3a6e15d5, type: 3}
+    volume: 0.75
+  - id: Beep
+    audioClip: {fileID: 8300000, guid: ee86578680bb9e5418813ba9858d8aaa, type: 3}
+    volume: 0.5
+  - id: Boop
+    audioClip: {fileID: 8300000, guid: 7fcdf669392bcf1499688b2462d9c220, type: 3}
+    volume: 0.5
+  - id: BombDrop
+    audioClip: {fileID: 8300000, guid: 1f8d40b7dfdd2a54c969666cab5d88ad, type: 3}
+    volume: 0.75
+  - id: Button
+    audioClip: {fileID: 8300000, guid: 611a7789f831430469379f05305be1e3, type: 3}
+    volume: 0.5
+  - id: EnemyDeath
+    audioClip: {fileID: 8300000, guid: 9aa4d53d8240ded499e0e977abba0337, type: 3}
+    volume: 0.5
+  - id: EnemyDamage
+    audioClip: {fileID: 8300000, guid: 627f1c4992d8a8944802f90841ed7b4f, type: 3}
+    volume: 0.75
