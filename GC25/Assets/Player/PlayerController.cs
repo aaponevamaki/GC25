@@ -19,7 +19,10 @@ public class PlayerController : MonoBehaviour
         controls.Player.Move.canceled += ctx => movement.SetMoveInput(Vector2.zero);
         controls.Player.Bomb.performed += ctx => bomb.PlaceBomb();
         controls.Player.Menu.performed += ctx => mainmenu.GetComponent<MainMenu>().LoadMainMenu();
+    }
 
+    private void Start()
+    {
         LoadPlayerData();
     }
 

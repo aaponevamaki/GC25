@@ -51,6 +51,7 @@ public class HealthManager : MonoBehaviour
                     }
                 case ObjectType.Enemy:
                     {
+                        AudioManager.Instance.PlaySFXClip("EnemyDeath");
                         gameObject.SetActive(false);
                         SetHealth(_maxHealth);
                         SpawnManager.Instance.SpawnPowerup(transform.position);
@@ -69,6 +70,7 @@ public class HealthManager : MonoBehaviour
                     }
                 case ObjectType.Enemy:
                     {
+                        AudioManager.Instance.PlaySFXClip("EnemyDamage");
                         break;
                     }
             }
