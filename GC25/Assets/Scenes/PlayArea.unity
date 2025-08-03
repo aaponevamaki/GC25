@@ -530,7 +530,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28.7
+  m_fontSize: 40
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1038,10 +1038,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 800, y: 800}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2406,7 +2406,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2205436803287540753, guid: 7d2805495f7806f45bb1a29e82a1054e, type: 3}
       propertyPath: _poolSize
-      value: 3
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2205436803287540753, guid: 7d2805495f7806f45bb1a29e82a1054e, type: 3}
+      propertyPath: _enemySpawnRate
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 5165646714824923035, guid: 7d2805495f7806f45bb1a29e82a1054e, type: 3}
       propertyPath: m_Name
