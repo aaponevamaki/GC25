@@ -22,9 +22,9 @@ public class PlayerBombController : MonoBehaviour
 
     private Coroutine upgradeCoroutine;
 
-    public void PlaceBomb()
+    public void PlaceBomb(bool canDrop)
     {
-        if (Time.time >= lastBombTime + bombStats.cooldown)
+        if (Time.time >= lastBombTime + bombStats.cooldown && canDrop)
         {
             GameObject bomb = Instantiate(bombPrefab, transform.position, Quaternion.identity);
 
