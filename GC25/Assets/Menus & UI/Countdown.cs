@@ -28,6 +28,7 @@ public class Countdown : MonoBehaviour
 
         countdownText.text = "GO!";
         AudioManager.Instance.PlaySFXClip("Boop");
+        AudioManager.Instance.StartLoop("BackgroundMusic", group: "Music");
         yield return new WaitForSeconds(1f);
         countdownText.gameObject.SetActive(false);
 

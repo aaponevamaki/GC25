@@ -43,3 +43,6 @@ MonoBehaviour:
   - id: EnemyDamage
     audioClip: {fileID: 8300000, guid: 627f1c4992d8a8944802f90841ed7b4f, type: 3}
     volume: 0.75
+  - id: BackgroundMusic
+    audioClip: {fileID: 8300000, guid: 2185ab2d13b1ae241989791057a29d8a, type: 3}
+    volume: 0.5
