@@ -360,7 +360,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.1
+  m_fontSize: 40
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -540,13 +540,13 @@ MonoBehaviour:
 
     KEYBOARD: SPACE / ENTER
 
-    CONTROLLER: "BUTTON SOUTH"
+    CONTROLLER: X/A BUTTON
 
 
-    OPEN
-    MENU
+    OPEN MENU
 
-    KEYBOARD: ESCAPE
+    KEYBOARD:
+    ESCAPE
 
     CONTROLLER: START / OPTIONS'
   m_isRightToLeft: 0
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.05
+  m_fontSize: 40
   m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 1
