@@ -1,4 +1,3 @@
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class EggBomb : MonoBehaviour
@@ -13,10 +12,16 @@ public class EggBomb : MonoBehaviour
     [Header("Layer Masks")]
     public LayerMask obstacleMask;
 
+    private Animator animator;
+
     void Start()
     {
         Invoke(nameof(Explode), stats.fuseTime);
         AudioManager.Instance.PlaySFXClip("BombDrop");
+
+        animator = GetComponent<Animator>();
+        var clip = animator.runtimeAnimatorController.animationClips[0];
+        Invoke(nameof(StartAnimation), stats.fuseTime - clip.length);
     }
 
     void Explode()
@@ -69,6 +74,11 @@ public class EggBomb : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+
+    private void StartAnimation()
+    {
+        animator.SetBool("Explode", true);
     }
 
     void OnDrawGizmosSelected()

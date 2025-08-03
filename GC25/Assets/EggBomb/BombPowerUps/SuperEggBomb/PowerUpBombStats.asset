@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 1
   explosionRadius: 4
-  fuseTime: 3
+  fuseTime: 1.5
   damage: 2
